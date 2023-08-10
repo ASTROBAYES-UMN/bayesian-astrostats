@@ -550,9 +550,10 @@ where $a>0$ is known. If $\theta \sim \text{Beta}(b, c)$ find the posterior pred
   $\theta \sim \text{N}(0,1)$.  Compare the posterior mean with the
   posterior predictive mean and the posterior variance with the
   posterior predictive variance.
+  
 
-Hint: The easy way to do this problem is via the [Law of Iterated Expectation]({https://en.wikipedia.org/wiki/Law_of_total_expectation) and the [Law of Total Variance](https://en.wikipedia.org/wiki/Law_of_total_variance), but it can be solved in a direct, if somewhat messy ,fashion.
-:::
+Hint: The easy way to do this problem is via the [Law of Iterated Expectation](https://en.wikipedia.org/wiki/Law_of_total_expectation) and the [Law of Total Variance](https://en.wikipedia.org/wiki/Law_of_total_variance), but it can be solved in a direct, if somewhat messy ,fashion.
+
 
 ## Sampling
 
