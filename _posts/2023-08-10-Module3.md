@@ -52,11 +52,7 @@ Notice that $$E[X\mid \theta]= \sum_{x=0}^{\infty} x \frac{\theta^x e^{-\theta}}
 
 ## What does Poisson data look like?
 
-```{r}
-#| echo: true
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 library(tidyverse)
 library(modelsummary)
@@ -75,11 +71,7 @@ datasummary_skim(pois_dat1)
 
 ![Desktop View](/assets/img/Module-3/table_2.png){: w="700" h="400" }
 
-```{r}
-#| echo: true
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 theta <- 5
 
@@ -93,11 +85,7 @@ datasummary_skim(pois_dat2)
 ![Desktop View](/assets/img/Module-3/fig_1.png){: w="700" h="400" }
 _Figure 1: Histograms of simulated Poisson data._
 
-```{r}
-#| echo: true
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 theta <- 1
 
@@ -109,11 +97,7 @@ datasummary_skim(pois_dat3)
 
 ```
 
-```{r}
-#| echo: true
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 theta <- 5
 
@@ -125,24 +109,14 @@ datasummary_skim(pois_dat4)
 
 ```
 
-::: {#fig-pois_dat layout="[[2,2]]"}
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
-
+```
 pois_plot1 <- ggplot(pois_dat1, aes(x=value)) + geom_histogram() +
   labs(title = "N=10, theta=1", x = "Simulated values")
 
 pois_plot1
 ```
 
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 pois_plot2 <- ggplot(pois_dat2, aes(x=value)) + geom_histogram() +
   labs(title = "N=10, theta=5", x = "Simulated values")
@@ -150,23 +124,14 @@ pois_plot2 <- ggplot(pois_dat2, aes(x=value)) + geom_histogram() +
 pois_plot2
 ```
 
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
-
+```
 pois_plot3 <- ggplot(pois_dat3, aes(x=value)) + geom_histogram() +
   labs(title = "N=100, theta=1", x = "Simulated values")
 
 pois_plot3
 ```
 
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 pois_plot4 <- ggplot(pois_dat4, aes(x=value)) + geom_histogram() +
   labs(title = "N=100, theta=5", x = "Simulated values")
@@ -229,11 +194,7 @@ In this parameterization $\alpha$ is still called the shape parameter, but $\bet
 
 ## Simulated data
 
-```{r}
-#| echo: true
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 nobs <-500
 
@@ -247,11 +208,7 @@ datasummary_skim(gamma_dat1)
 
 ```
 
-```{r}
-#| echo: true
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 alpha <- 1
 
@@ -262,11 +219,7 @@ gamma_dat2 <- as_tibble(rgamma(nobs, shape = alpha, rate = beta))
 datasummary_skim(gamma_dat2)
 ```
 
-```{r}
-#| echo: true
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 alpha <- 2
 
@@ -278,11 +231,7 @@ datasummary_skim(gamma_dat3)
 
 ```
 
-```{r}
-#| echo: true
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 alpha <- 7.5
 
@@ -300,11 +249,7 @@ _Figure 2: Histograms and density functions for Gamma data._
 \newpage
 
 ::: {#fig-gamma_dat layout="[[2,2]]"}
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 gamma_plot1 <- ggplot(gamma_dat1, aes(x=value)) +
   geom_histogram(aes(y =..density..), 
@@ -316,11 +261,7 @@ gamma_plot1 <- ggplot(gamma_dat1, aes(x=value)) +
 gamma_plot1
 ```
 
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 gamma_plot2 <- ggplot(gamma_dat2, aes(x=value)) +
   geom_histogram(aes(y =..density..), 
@@ -332,11 +273,7 @@ gamma_plot2 <- ggplot(gamma_dat2, aes(x=value)) +
 gamma_plot2
 ```
 
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 gamma_plot3 <- ggplot(gamma_dat3, aes(x=value)) +
   geom_histogram(aes(y =..density..), 
@@ -348,11 +285,7 @@ gamma_plot3 <- ggplot(gamma_dat3, aes(x=value)) +
 gamma_plot3
 ```
 
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 gamma_plot4 <- ggplot(gamma_dat4, aes(x=value)) +
   geom_histogram(aes(y =..density..), 
@@ -445,11 +378,7 @@ The prior predictive distribution is $$m(x) = \frac{t_{1}^{x_{1}} t_{2}^{x_{2}}}
 
 Consider four scenarios $(a,b) \in \{(0.001, 0.001), (1,1), (2,10), (10,2) \}$.
 
-```{r}
-#| echo: true
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 msim <- 100
 
@@ -473,11 +402,7 @@ for (iter in 1:msim){
 datasummary_skim(priorpred_dat1)
 ```
 
-```{r}
-#| echo: true
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 a <- 1
 
@@ -497,11 +422,7 @@ datasummary_skim(priorpred_dat2)
 
 ![Desktop View](/assets/img/Module-3/table_5.png){: w="700" h="400" }
 
-```{r}
-#| echo: true
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 a <- 2
 
@@ -519,11 +440,7 @@ for (iter in 1:msim){
 datasummary_skim(priorpred_dat3)
 ```
 
-```{r}
-#| echo: true
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 a <- 10
 
@@ -544,11 +461,7 @@ datasummary_skim(priorpred_dat4)
 
 ![Desktop View](/assets/img/Module-3/fig_3.png){: w="700" h="400" }
 _Figure 3: Histograms of 100 prior predictive samples_
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 pp_dat1 <- c(priorpred_dat1[,1], priorpred_dat1[,2])
 
@@ -561,11 +474,7 @@ priorpred_plot1 <- ggplot(priorpred_dat1, aes(x=value)) +
 priorpred_plot1
 ```
 
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 pp_dat2 <- c(priorpred_dat2[,1], priorpred_dat2[,2])
 
@@ -578,12 +487,7 @@ priorpred_plot2 <- ggplot(priorpred_dat2, aes(x=value)) +
 priorpred_plot2
 ```
 
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
-
+```
 
 priorpred_dat3 <- 
   as_tibble(c(priorpred_dat3[,1], priorpred_dat3[,2]))
@@ -595,11 +499,7 @@ priorpred_plot3 <- ggplot(priorpred_dat3, aes(x=value)) +
 priorpred_plot3
 ```
 
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 
 priorpred_dat4 <- 
@@ -621,11 +521,7 @@ Histograms of `r msim` prior predictive samples.
 
 Recall that $\theta \mid x_1=8, x_2=11, t_1=5.59, t_2=12.439 \sim \text{Gamma}(a + 19, b + 18.029)$.
 
-```{r}
-#| echo: true
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 x_1 <- 8
 t_1 <- 5.59
@@ -646,11 +542,7 @@ post_ub <- qgamma(.9, shape = post_shape, rate = post_rate)
 
 If the prior is Gamma(`r prior_shape`, `r prior_rate`), the posterior is Gamma(`r post_shape`, `r post_rate`), yielding a posterior mean of `r signif(post_mean, digits=3)` and a 0.8-credible interval of `r signif(post_lb, digits=3)` to `r signif(post_ub, digits=3)`.
 
-```{r}
-#| echo: true
-#| eval: true
-#| message: false
-#| warning: false
+```
 
 prior_plot1 <- ggplot() + xlim(0,3) + theme_classic() + 
   geom_function(fun = dgamma, args = 
@@ -673,23 +565,13 @@ post_plot1 <- ggplot()  +
 ![Desktop View](/assets/img/Module-3/fig_4.png){: w="700" h="400" }
 _Figure 4: Gamma (1,1) prior and Gamma(20, 19.029) posterior with 0.9-credible interval_
 
-```{r}
-#| echo: false
-#| eval: true
-
-post_plot1
-```
 
 Gamma (`r prior_shape`, `r prior_rate`) prior and Gamma(`r post_shape`, `r post_rate`) posterior with 0.8-credible interval.
 :::
 
 \newpage
 
-```{r}
-#| echo: true
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 prior_shape <- 0.001
 prior_rate <- 0.001
@@ -705,11 +587,7 @@ post_ub <- qgamma(.9, shape = post_shape, rate = post_rate)
 
 If the prior is Gamma(`r prior_shape`, `r prior_rate`), the posterior is Gamma(`r post_shape`, `r post_rate`), yielding a posterior mean of `r signif(post_mean, digits=3)` and a 0.8-credible interval of `r signif(post_lb, digits=3)` to `r signif(post_ub, digits=3)`.
 
-```{r}
-#| echo: true
-#| eval: true
-#| message: false
-#| warning: false
+```
 
 prior_plot2 <- ggplot() + xlim(0,3) + theme_classic() + 
   geom_function(fun = dgamma, args = 
@@ -732,23 +610,12 @@ post_plot2 <- ggplot()  +
 ![Desktop View](/assets/img/Module-3/fig_5.png){: w="700" h="400" }
 _Figure 5: Gamma (0.001, 0.001) prior and Gamma(19.001, 18.03) posterior with 0.8-credible interval_
 
-```{r}
-#| echo: false
-#| eval: true
-
-post_plot2
-```
-
 Gamma (`r prior_shape`, `r prior_rate`) prior and Gamma(`r post_shape`, `r post_rate`) posterior with 0.8-credible interval.
-:::
+
 
 \newpage
 
-```{r}
-#| echo: true
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 prior_shape <- 2
 prior_rate <- 10
@@ -764,11 +631,7 @@ post_ub <- qgamma(.9, shape = post_shape, rate = post_rate)
 
 If the prior is Gamma(`r prior_shape`, `r prior_rate`), the posterior is Gamma(`r post_shape`, `r post_rate`), yielding a posterior mean of `r signif(post_mean, digits=3)` and a 0.8-credible interval of `r signif(post_lb, digits=3)` to `r signif(post_ub, digits=3)`.
 
-```{r}
-#| echo: true
-#| eval: true
-#| message: false
-#| warning: false
+```
 
 prior_plot3 <- ggplot() + xlim(0,3) + theme_classic() + 
   geom_function(fun = dgamma, args = 
@@ -796,11 +659,7 @@ Gamma (`r prior_shape`, `r prior_rate`) prior and Gamma(`r post_shape`, `r post_
 
 \newpage
 
-```{r}
-#| echo: true
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 prior_shape <- 10
 prior_rate <- 2
@@ -816,11 +675,7 @@ post_ub <- qgamma(.9, shape = post_shape, rate = post_rate)
 
 If the prior is Gamma(`r prior_shape`, `r prior_rate`), the posterior is Gamma(`r post_shape`, `r post_rate`), yielding a posterior mean of `r signif(post_mean, digits=3)` and a 0.8-credible interval of `r signif(post_lb, digits=3)` to `r signif(post_ub, digits=3)`.
 
-```{r}
-#| echo: true
-#| eval: true
-#| message: false
-#| warning: false
+```
 
 prior_plot4 <- ggplot() + xlim(0,3) + theme_classic() + 
   geom_function(fun = dgamma, args = 
