@@ -63,7 +63,7 @@ GC_hist
 
 3.  $x$ observed data, described above
 
-4.  $\mathcal{X}$, all possible vectors of `r length(GC_dat$GCount)` non-negative integers
+4.  $\mathcal{X}$, all possible vectors of `r length(GC_dat&GCount)` non-negative integers
 
 5.  $p(x \mid \theta)$, a description of how the data arise
 
@@ -215,7 +215,7 @@ Histograms of `r msim` Negative Binomial simulations
 
 3.  $x$ observed data, described above
 
-4.  $\mathcal{X}$, all possible vectors of `r length(GC_dat$GCount)` non-negative integers
+4.  $\mathcal{X}$, all possible vectors of `r length(GC_dat&GCount)` non-negative integers
 
 5. Description of how the data arise, either
 
@@ -411,7 +411,7 @@ Prior and posterior for Poisson-Gamma model with posterior mean `r signif(post_m
 
 ## Negative Binomial-Beta
 
-Taking $a=5$ and $b=c=10$ with $n=$ `r length(GC_dat$GCount)` and $\bar{x}=$ `r mean(GC_dat$GCount)`, the posterior is Beta(`r 10+5*length(GC_dat$GCount)`, `r 10 + length(GC_dat$GCount)*mean(GC_dat$GCount)`).
+Taking $a=5$ and $b=c=10$ with $n=$ `r length(GC_dat&GCount)` and $\bar{x}=$ `r mean(GC_dat$GCount)`, the posterior is Beta(`r 10+5*length(GC_dat$GCount)`, `r 10 + length(GC_dat$GCount)*mean(GC_dat$GCount)`).
 
 ```{r}
 #| echo: false
@@ -656,7 +656,7 @@ In the prior section the mean of the posterior predictive distribution for the P
 #| warning: false
 #| message: false
 
-ci <- signif(t.test(postpred_pg, conf.level = 0.95)$conf.int, digits = 4)
+ci <- signif(t.test(postpred_pg, conf.level = 0.95)&conf.int, digits = 4)
 ci
 
 # mc_sims <- 1e3
@@ -664,7 +664,7 @@ postpred_pg <- rnbinom(1e3, prior_shape + nobs*GC_mean, (prior_rate + nobs)/(pri
 
 mean(postpred_pg)
 
-ci <- signif(t.test(postpred_pg, conf.level = 0.95)$conf.int, digits = 4)
+ci <- signif(t.test(postpred_pg, conf.level = 0.95)&conf.int, digits = 4)
 ci
 
 # mc_sims <- 1e4
@@ -672,7 +672,7 @@ postpred_pg <- rnbinom(1e4, prior_shape + nobs*GC_mean, (prior_rate + nobs)/(pri
 
 mean(postpred_pg)
 
-ci <- signif(t.test(postpred_pg, conf.level = 0.95)$conf.int, digits = 4)
+ci <- signif(t.test(postpred_pg, conf.level = 0.95)&conf.int, digits = 4)
 ci
 
 # mc_sims <- 1e5
@@ -689,7 +689,7 @@ postpred_pg <- rnbinom(1e6, prior_shape + nobs*GC_mean, (prior_rate + nobs)/(pri
 
 mean(postpred_pg)
 
-ci <- signif(t.test(postpred_pg, conf.level = 0.95)$conf.int, digits = 4)
+ci <- signif(t.test(postpred_pg, conf.level = 0.95)&conf.int, digits = 4)
 ci
 ```
 
