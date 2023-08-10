@@ -48,7 +48,7 @@ Notice that $$E[X\mid \theta]= \sum_{x=0}^{\infty} x \frac{\theta^x e^{-\theta}}
 
 \newpage
 
-![Desktop View](/assets/img/Modle3/table_1.png){: w="700" h="400" }
+![Desktop View](/assets/img/Module-3/table_1.png){: w="700" h="400" }
 
 ## What does Poisson data look like?
 
