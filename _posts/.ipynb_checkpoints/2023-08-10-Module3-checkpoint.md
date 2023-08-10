@@ -139,11 +139,6 @@ pois_plot4 <- ggplot(pois_dat4, aes(x=value)) + geom_histogram() +
 pois_plot4
 ```
 
-Histograms of simulated Poisson data.
-:::
-
-\newpage
-
 # Statistical Model, Part 2
 
 1.  $\theta$, mean rate (count per time) of neutrino detection
@@ -160,7 +155,6 @@ Histograms of simulated Poisson data.
 
 What is the likelihood?
 
-\newpage
 
 # Gamma Distribution
 
@@ -176,7 +170,6 @@ $$p(x|\alpha,\beta) = \frac{\beta^{\alpha}}{\Gamma(\alpha)}x^{\alpha-1} e^{-\bet
 If $X \mid \alpha, \beta \sim \text{Gamma}(\alpha, \beta)$, then $$E[X \mid \alpha, \beta] = \alpha/\beta~~~~\text{ and }~~~~~~Var[X \mid \alpha, \beta] = \alpha / \beta^2 .$$
 :::
 
-\newpage
 
 ::: callout-warning
 Another parameterization of the Gamma density is common
@@ -187,8 +180,6 @@ In this parameterization $\alpha$ is still called the shape parameter, but $\bet
 
 *Either parameterization of the Gamma distribution can appear in software packages. Which one is used can and will impact computational results.*
 :::
-
-\newpage
 
 ![Desktop View](/assets/img/Module-3/table_3.png){: w="700" h="400" }
 
@@ -246,9 +237,6 @@ datasummary_skim(gamma_dat4)
 ![Desktop View](/assets/img/Module-3/fig_2.png){: w="700" h="400" }
 _Figure 2: Histograms and density functions for Gamma data._
 
-\newpage
-
-::: {#fig-gamma_dat layout="[[2,2]]"}
 ```
 
 gamma_plot1 <- ggplot(gamma_dat1, aes(x=value)) +
@@ -296,12 +284,6 @@ gamma_plot4 <- ggplot(gamma_dat4, aes(x=value)) +
 
 gamma_plot4
 ```
-
-Histograms and density functions for Gamma data.
-:::
-
-\newpage
-
 ## Special Cases
 
 The *Exponential distribution* is a special case of the Gamma distribution where $\alpha=1$. If $X \sim \text{Gamma}(1,\beta)$, then
@@ -320,9 +302,6 @@ The Poisson and Gamma distributions share many interesting connections. Suppose 
 $$P(X \le x) = P(Y \ge \alpha).$$
 
 Hint: Integration by parts is your friend.
-:::
-
-\newpage
 
 # Statistical Model, Part 3
 
@@ -340,7 +319,6 @@ Hint: Integration by parts is your friend.
 
 The posterior distribution is $\theta \mid x_1, x_2, t_1, t_2 \sim \text{Gamma}(a + x_1 + x_2, b + t_1 + t_2)$ or for this particular data $\theta \mid x_1=8, x_2=11, t_1=5.59, t_2=12.439 \sim \text{Gamma}(a + 19, b + 18.029)$
 
-\newpage
 
 # Prior Predictive Check
 
@@ -360,7 +338,6 @@ If $m(x)$ is a name-brand distribution, then we can often simulate directly from
 
 5.  Set $j = j + 1$.
 
-\newpage
 
 ## Example: Neutrino events
 
@@ -374,7 +351,6 @@ The prior predictive distribution is $$m(x) = \frac{t_{1}^{x_{1}} t_{2}^{x_{2}}}
 
 ![Desktop View](/assets/img/Module-3/table_4.png){: w="700" h="400" }
 
-\newpage
 
 Consider four scenarios $(a,b) \in \{(0.001, 0.001), (1,1), (2,10), (10,2) \}$.
 
@@ -512,11 +488,6 @@ priorpred_plot4 <- ggplot(priorpred_dat4, aes(x=value)) +
 priorpred_plot4
 ```
 
-Histograms of `r msim` prior predictive samples.
-:::
-
-\newpage
-
 # Neutrino Events
 
 Recall that $\theta \mid x_1=8, x_2=11, t_1=5.59, t_2=12.439 \sim \text{Gamma}(a + 19, b + 18.029)$.
@@ -566,11 +537,6 @@ post_plot1 <- ggplot()  +
 _Figure 4: Gamma (1,1) prior and Gamma(20, 19.029) posterior with 0.9-credible interval_
 
 
-Gamma (`r prior_shape`, `r prior_rate`) prior and Gamma(`r post_shape`, `r post_rate`) posterior with 0.8-credible interval.
-:::
-
-\newpage
-
 ```
 
 prior_shape <- 0.001
@@ -584,8 +550,6 @@ post_mean <- post_shape / post_rate
 post_lb <- qgamma(.1, shape = post_shape, rate = post_rate)
 post_ub <- qgamma(.9, shape = post_shape, rate = post_rate)
 ```
-
-If the prior is Gamma(`r prior_shape`, `r prior_rate`), the posterior is Gamma(`r post_shape`, `r post_rate`), yielding a posterior mean of `r signif(post_mean, digits=3)` and a 0.8-credible interval of `r signif(post_lb, digits=3)` to `r signif(post_ub, digits=3)`.
 
 ```
 
@@ -610,11 +574,6 @@ post_plot2 <- ggplot()  +
 ![Desktop View](/assets/img/Module-3/fig_5.png){: w="700" h="400" }
 _Figure 5: Gamma (0.001, 0.001) prior and Gamma(19.001, 18.03) posterior with 0.8-credible interval_
 
-Gamma (`r prior_shape`, `r prior_rate`) prior and Gamma(`r post_shape`, `r post_rate`) posterior with 0.8-credible interval.
-
-
-\newpage
-
 ```
 
 prior_shape <- 2
@@ -628,8 +587,6 @@ post_mean <- post_shape / post_rate
 post_lb <- qgamma(.1, shape = post_shape, rate = post_rate)
 post_ub <- qgamma(.9, shape = post_shape, rate = post_rate)
 ```
-
-If the prior is Gamma(`r prior_shape`, `r prior_rate`), the posterior is Gamma(`r post_shape`, `r post_rate`), yielding a posterior mean of `r signif(post_mean, digits=3)` and a 0.8-credible interval of `r signif(post_lb, digits=3)` to `r signif(post_ub, digits=3)`.
 
 ```
 
@@ -654,11 +611,6 @@ post_plot3 <- ggplot()  +
 ![Desktop View](/assets/img/Module-3/fig_6.png){: w="700" h="400" }
 _Figure 6: Gamma (2,10) prior and Gamma(21, 28.029) posterior with 0.8-credible interval_
 
-Gamma (`r prior_shape`, `r prior_rate`) prior and Gamma(`r post_shape`, `r post_rate`) posterior with 0.8-credible interval.
-:::
-
-\newpage
-
 ```
 
 prior_shape <- 10
@@ -672,8 +624,6 @@ post_mean <- post_shape / post_rate
 post_lb <- qgamma(.1, shape = post_shape, rate = post_rate)
 post_ub <- qgamma(.9, shape = post_shape, rate = post_rate)
 ```
-
-If the prior is Gamma(`r prior_shape`, `r prior_rate`), the posterior is Gamma(`r post_shape`, `r post_rate`), yielding a posterior mean of `r signif(post_mean, digits=3)` and a 0.8-credible interval of `r signif(post_lb, digits=3)` to `r signif(post_ub, digits=3)`.
 
 ```
 
@@ -698,8 +648,6 @@ post_plot4 <- ggplot()  +
 ![Desktop View](/assets/img/Module-3/fig_7.png){: w="700" h="400" }
 _Figure 7: Gamma (10,2) prior and Gamma(29, 20.029) posterior with 0.8-credible interval_
 
-Gamma (`r prior_shape`, `r prior_rate`) prior and Gamma(`r post_shape`, `r post_rate`) posterior with 0.8-credible interval.
-:::
 
 ## Summary
 
