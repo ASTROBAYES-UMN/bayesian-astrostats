@@ -73,6 +73,8 @@ datasummary_skim(pois_dat1)
 
 ```
 
+![Desktop View](/assets/img/Module-3/table_2.png){: w="700" h="400" }
+
 ```{r}
 #| echo: true
 #| eval: true
@@ -88,6 +90,8 @@ pois_dat2 <- as_tibble(rpois(nobs, theta))
 datasummary_skim(pois_dat2)
 
 ```
+![Desktop View](/assets/img/Module-3/fig_1.png){: w="700" h="400" }
+_Figure 1: Histograms of simulated Poisson data._
 
 ```{r}
 #| echo: true
@@ -221,6 +225,8 @@ In this parameterization $\alpha$ is still called the shape parameter, but $\bet
 
 \newpage
 
+![Desktop View](/assets/img/Module-3/table_3.png){: w="700" h="400" }
+
 ## Simulated data
 
 ```{r}
@@ -287,6 +293,9 @@ gamma_dat4 <- as_tibble(rgamma(nobs, shape = alpha, rate = beta))
 datasummary_skim(gamma_dat4)
 
 ```
+
+![Desktop View](/assets/img/Module-3/fig_2.png){: w="700" h="400" }
+_Figure 2: Histograms and density functions for Gamma data._
 
 \newpage
 
@@ -430,6 +439,8 @@ Recall that the assumptions are:
 
 The prior predictive distribution is $$m(x) = \frac{t_{1}^{x_{1}} t_{2}^{x_{2}}}{x_1 ! x_2!} \frac{b^a}{\Gamma(a)} \frac{\Gamma(a + x_{1} + x_{2})}{(b + t_{1} + t_{2})^{a + x_{1} + x_{2}}}$$ which is not a distribution that's been encountered in the course yet, so let's resort to simulation.
 
+![Desktop View](/assets/img/Module-3/table_4.png){: w="700" h="400" }
+
 \newpage
 
 Consider four scenarios $(a,b) \in \{(0.001, 0.001), (1,1), (2,10), (10,2) \}$.
@@ -484,6 +495,8 @@ for (iter in 1:msim){
 datasummary_skim(priorpred_dat2)
 ```
 
+![Desktop View](/assets/img/Module-3/table_5.png){: w="700" h="400" }
+
 ```{r}
 #| echo: true
 #| eval: true
@@ -527,8 +540,10 @@ for (iter in 1:msim){
 
 datasummary_skim(priorpred_dat4)
 ```
+![Desktop View](/assets/img/Module-3/table_6.png){: w="700" h="400" }
 
-::: {#fig-gamma_dat layout="[[2,2]]"}
+![Desktop View](/assets/img/Module-3/fig_3.png){: w="700" h="400" }
+_Figure 3: Histograms of 100 prior predictive samples_
 ```{r}
 #| echo: false
 #| eval: true
@@ -655,13 +670,8 @@ post_plot1 <- ggplot()  +
   geom_vline(xintercept = post_mean, colour = "blue", linetype = "dashed")
 ```
 
-::: {#fig-prior_post1 layout="[[1,1]]"}
-```{r}
-#| echo: false
-#| eval: true
-
-prior_plot1 
-```
+![Desktop View](/assets/img/Module-3/fig_4.png){: w="700" h="400" }
+_Figure 4: Gamma (1,1) prior and Gamma(20, 19.029) posterior with 0.9-credible interval_
 
 ```{r}
 #| echo: false
@@ -719,13 +729,8 @@ post_plot2 <- ggplot()  +
   geom_vline(xintercept = post_mean, colour = "blue", linetype = "dashed")
 ```
 
-::: {#fig-prior_post2 layout="[[1,1]]"}
-```{r}
-#| echo: false
-#| eval: true
-
-prior_plot2 
-```
+![Desktop View](/assets/img/Module-3/fig_5.png){: w="700" h="400" }
+_Figure 5: Gamma (0.001, 0.001) prior and Gamma(19.001, 18.03) posterior with 0.8-credible interval_
 
 ```{r}
 #| echo: false
@@ -783,20 +788,8 @@ post_plot3 <- ggplot()  +
   geom_vline(xintercept = post_mean, colour = "blue", linetype = "dashed")
 ```
 
-::: {#fig-prior_post3 layout="[[1,1]]"}
-```{r}
-#| echo: false
-#| eval: true
-
-prior_plot3 
-```
-
-```{r}
-#| echo: false
-#| eval: true
-
-post_plot3
-```
+![Desktop View](/assets/img/Module-3/fig_6.png){: w="700" h="400" }
+_Figure 6: Gamma (2,10) prior and Gamma(21, 28.029) posterior with 0.8-credible interval_
 
 Gamma (`r prior_shape`, `r prior_rate`) prior and Gamma(`r post_shape`, `r post_rate`) posterior with 0.8-credible interval.
 :::
@@ -847,122 +840,16 @@ post_plot4 <- ggplot()  +
   geom_vline(xintercept = post_mean, colour = "blue", linetype = "dashed")
 ```
 
-::: {#fig-prior_post4 layout="[[1,1]]"}
-```{r}
-#| echo: false
-#| eval: true
-
-prior_plot4 
-```
-
-```{r}
-#| echo: false
-#| eval: true
-
-post_plot4
-```
+![Desktop View](/assets/img/Module-3/fig_7.png){: w="700" h="400" }
+_Figure 7: Gamma (10,2) prior and Gamma(29, 20.029) posterior with 0.8-credible interval_
 
 Gamma (`r prior_shape`, `r prior_rate`) prior and Gamma(`r post_shape`, `r post_rate`) posterior with 0.8-credible interval.
 :::
 
 ## Summary
 
-::: {#fig-prior_post_sum layout="[[4,4]]"}
-```{r}
-#| echo: false
-#| eval: true
+![Desktop View](/assets/img/Module-3/fig_8.png){: w="700" h="400" }
+_Figure 8: Four priors anmd posteriors_
 
-prior_plot1 
-```
-
-```{r}
-#| echo: false
-#| eval: true
-
-post_plot1
-```
-
-```{r}
-#| echo: false
-#| eval: true
-
-prior_plot2
-```
-
-```{r}
-#| echo: false
-#| eval: true
-
-post_plot2
-```
-
-```{r}
-#| echo: false
-#| eval: true
-
-prior_plot3
-```
-
-```{r}
-#| echo: false
-#| eval: true
-
-post_plot3
-```
-
-```{r}
-#| echo: false
-#| eval: true
-
-prior_plot4
-```
-
-```{r}
-#| echo: false
-#| eval: true
-
-post_plot4
-```
-
-Four priors and posteriors
-:::
-
-::: {#fig-pp layout="[[2,2]]"}
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
-
-priorpred_plot2
-```
-
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
-
-priorpred_plot1
-```
-
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
-
-priorpred_plot3
-```
-
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
-
-priorpred_plot4
-```
-
-Four prior predictive plots.
-:::
+![Desktop View](/assets/img/Module-3/fig_9.png){: w="700" h="400" }
+_Figure 9: Four prior predictive plots_
