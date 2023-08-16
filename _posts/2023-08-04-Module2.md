@@ -2,7 +2,7 @@
 layout: post
 title: "Introductory Probability and Statistics"
 date: 2023-07-10
-categories: 5731
+categories: modules
 tags: test demo pleaseWork
 pin: false
 ---
