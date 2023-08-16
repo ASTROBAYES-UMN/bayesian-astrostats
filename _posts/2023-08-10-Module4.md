@@ -14,6 +14,9 @@ The WISP survey observed hundreds of regions in the sky, each covering an area o
 
 *Question* If we were to choose a region of the same size how many galaxies should we expect to observe?
 
+![Desktop View](/assets/img/Module-4/table_1.png){: w="700" h="400" }
+
+
 ```
 
 library(tidyverse)
@@ -42,6 +45,9 @@ GC_box
 
 ```
 
+![Desktop View](/assets/img/Module-4/fig_1.png){: w="700" h="400" }
+
+
 ```
 
 GC_hist <- ggplot(GC_dat, aes(x = GCount)) + 
@@ -54,6 +60,9 @@ GC_hist <- ggplot(GC_dat, aes(x = GCount)) +
 GC_hist
 
 ```
+
+![Desktop View](/assets/img/Module-4/fig_2.png){: w="700" h="400" }
+
 
 # Statistical Model, Part 1
 
@@ -126,12 +135,7 @@ will define a joint probability function for $(X, \lambda) \mid \theta$ so if we
 
 ### Negative Binomial Data
 
-```{r}
-#| echo: true
-#| eval: true
-#| warning: false
-#| message: false
-
+```
 set.seed(5731)
 
 msim <-nobs
@@ -145,28 +149,11 @@ sim_dat3 <- rnbinom(msim, size = 1, prob = 1/4)
 sim_dat4 <- rnbinom(msim, size = 1, prob = 3/4)
 
 ```
+![Desktop View](/assets/img/Module-4/fig_3.png){: w="700" h="400" }
+_Figure 1: Histograms of 303 Negative Binomial simulations_
 
 
-::: {#fig-pois_dat layout="[[2,2]]"}
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
-
-sim_dat1 <- as_tibble(sim_dat1)
-
-nb_plot1 <- ggplot(sim_dat1, aes(x=value)) + geom_histogram() +
-  labs(title = "a=1, theta=1/2", x = "Simulated values")
-
-nb_plot1
 ```
-
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
 
 sim_dat2 <- as_tibble(sim_dat2)
 
@@ -176,11 +163,7 @@ nb_plot2 <- ggplot(sim_dat2, aes(x=value)) + geom_histogram() +
 nb_plot2
 ```
 
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 sim_dat3 <- as_tibble(sim_dat3)
 
@@ -190,11 +173,7 @@ nb_plot3 <- ggplot(sim_dat3, aes(x=value)) + geom_histogram() +
 nb_plot3
 ```
 
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 sim_dat4 <- as_tibble(sim_dat4)
 
@@ -203,9 +182,6 @@ nb_plot4 <- ggplot(sim_dat4, aes(x=value)) + geom_histogram() +
 
 nb_plot4
 ```
-
-Histograms of `r msim` Negative Binomial simulations
-:::
 
 # Statistical Model, Part 2
 
@@ -246,11 +222,7 @@ Hence the posterior is $\text{Gamma}(a + n \bar{x}, n+b)$.
 
 ## Poisson-Gamma
 
-```{r}
-#| echo: true
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 msim <- nobs
 
@@ -261,13 +233,7 @@ theta <- rgamma(msim, shape = 2, rate = 0.5)
 priorpred_dat2 <- rpois(msim, theta)
 ```
 
-::: {#fig-pg_ppd layout="[[1,1]]"}
-
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 
 pg_ppd_plot1 <- ggplot(as_tibble(priorpred_dat1), aes(x=value)) + geom_histogram() +
@@ -276,11 +242,7 @@ pg_ppd_plot1 <- ggplot(as_tibble(priorpred_dat1), aes(x=value)) + geom_histogram
 pg_ppd_plot1
 ```
 
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 pg_ppd_plot2 <- ggplot(as_tibble(priorpred_dat2), aes(x=value)) + geom_histogram() +
   labs(title = "Prior shape=2, Prior rate=0.5", x = "Simulated values")
@@ -288,16 +250,12 @@ pg_ppd_plot2 <- ggplot(as_tibble(priorpred_dat2), aes(x=value)) + geom_histogram
 pg_ppd_plot2
 ```
 
-Prior predictive simulations of length `r msim` for Poisson-Gamma hierarchy.
-:::
+![Desktop View](/assets/img/Module-4/fig_4.png){: w="700" h="400" }
+_Figure 2: Prior predictive simulations of length 303 for Poisson-Gamma hierarchy_
 
 ## Negative Binomial-Beta
 
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 theta <- rbeta(msim, shape1 = 1, shape2 = 1)
 ppnb_dat1 <- rnbinom(msim, size = 1, prob = theta)
@@ -308,25 +266,14 @@ ppnb_dat2 <- rnbinom(msim, size = 5, prob = theta)
 
 ```
 
-::: {#fig-pg_ppd layout="[[1,1]]"}
-
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
-
+```
 nb_ppd_plot1 <- ggplot(as_tibble(ppnb_dat1), aes(x=value)) + geom_histogram() +
   labs(title = "Prior shape1=1, Prior shape2=1", x = "Simulated values")
 
 nb_ppd_plot1
 ```
 
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 nb_ppd_plot2 <- ggplot(as_tibble(ppnb_dat2), aes(x=value)) + geom_histogram() +
   labs(title = "Prior shape1=10, Prior shape2=10", x = "Simulated values")
@@ -334,8 +281,8 @@ nb_ppd_plot2 <- ggplot(as_tibble(ppnb_dat2), aes(x=value)) + geom_histogram() +
 nb_ppd_plot2
 ```
 
-Prior predictive simulations of length `r msim` for Negative Binomial-Beta hierarchy.
-:::
+![Desktop View](/assets/img/Module-4/fig_5.png){: w="700" h="400" }
+_Figure 3: Prior predictive simulations of length 303 for Negative Binomial-Beta hierarchy_
 
 # Galaxy Counts
 
@@ -343,11 +290,7 @@ Prior predictive simulations of length `r msim` for Negative Binomial-Beta hiera
 
 Taking $a=2.5$ and $b=0.5$ with $n=$ `r nobs` and $\bar{x}=$ `r GC_mean`, the posterior is Gamma(`r 2.5+nobs*GC_mean`, `r 0.5 + nobs`).
 
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 prior_shape <- 2.5
 prior_rate <- 0.5
@@ -360,13 +303,10 @@ post_mean <- post_shape / post_rate
 post_lb <- qgamma(.055, shape = post_shape, rate = post_rate)
 post_ub <- qgamma(.945, shape = post_shape, rate = post_rate)
 ```
+![Desktop View](/assets/img/Module-4/fig_6.png){: w="700" h="400" }
+_Figure 4: Prior and posterior for Poisson-Gamma model with posterior mean 5.853 and 89% credible intervale (5.633, 6.077)._
 
-
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 pg_prior_plot <- ggplot() + xlim(0,10) + theme_classic() + 
   geom_function(fun = dgamma, args = 
@@ -387,37 +327,12 @@ pg_post_plot <- ggplot()  +
 
 ```
 
-::: {#fig-pg_ppd layout="[[1,1]]"}
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
-
-pg_prior_plot
-```
-
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
-
-pg_post_plot
-```
-
-Prior and posterior for Poisson-Gamma model with posterior mean `r signif(post_mean, digits = 4)` and 89\% credible interval (`r signif(post_lb, digits = 4)`, `r signif(post_ub, digits = 4)`).
-:::
 
 ## Negative Binomial-Beta
 
 Taking $a=5$ and $b=c=10$ with $n=$ `r length(GC_dat&GCount)` and $\bar{x}=$ `r mean(GC_dat$GCount)`, the posterior is Beta(`r 10+5*length(GC_dat$GCount)`, `r 10 + length(GC_dat$GCount)*mean(GC_dat$GCount)`).
 
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 a<-5
 
@@ -433,11 +348,7 @@ post_lb <- qbeta(.055, shape1 =  post_shape1, shape2 = post_shape2)
 post_ub <- qbeta(.945, shape1 = post_shape1, shape2 = post_shape2)
 ```
 
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 nb_prior_plot <- ggplot() + xlim(0,1) + theme_classic() + 
   geom_function(fun = dbeta, args = 
@@ -458,27 +369,9 @@ nb_post_plot <- ggplot()  +
 
 ```
 
-::: {#fig-pg_ppd layout="[[1,1]]"}
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
+![Desktop View](/assets/img/Module-4/fig_7.png){: w="700" h="400" }
+_Figure 5: Prior and posterior for Negative Binomial-Beta model with posterior mean 0.6298 and 89% credible interval (0.6187, 0.6409)._
 
-nb_prior_plot
-```
-
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
-
-nb_post_plot
-```
-
-Prior and posterior for Negative Binomial-Beta model with posterior mean `r signif(post_mean, digits = 4)` and 89\% credible interval (`r signif(post_lb, digits = 4)`, `r signif(post_ub, digits = 4)`).
-:::
 
 # Posterior Predictive Distribution
 
@@ -581,25 +474,14 @@ pg_postpred_plot <- ggplot(as_tibble(postpred_pg), aes(x=value))  +
 
 ```
 
-
-::: {#fig-postpred_pg}
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
-
-pg_postpred_plot
-```
-
-Histogram of `r mc_sims` realizations from posterior predictive distribution based on Poisson-Gamma hierarchy.  The posterior predicitve mean is `r signif(mean(postpred_pg), digits=3)` and an 89\% prediction interval is (`r quantile(postpred_pg, 0.045)`, `r quantile(postpred_pg, 0.945)`).
-:::
-
 If the posterior predictive distribution is non-standard, then it is often easy to simulate from
 with the following algorithm.  Notice the similarity with the
 algorithm for sampling the prior predictive distribution.
 
-::: {#def-post_pred_samp}
+
+![Desktop View](/assets/img/Module-4/fig_8.png){: w="700" h="400" }
+_Figure 6: Histogram of 10^4 realizations from posterior predictive distributions based on Poisson-Gamma hierarchy. The posterior predictive mean is 5.94 and an 89% prediction interval is (2, 10)._
+
 
 The posterior predictive sampling algorithm:
 
@@ -613,13 +495,8 @@ For $j \in \{1,\ldots, m\}$
 3. Save $x_j$ and discard $\theta_j$.
 
 4. Set $j=j+1$.
-:::
 
-```{r}
-#| echo: true
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 theta_sims <- rbeta(mc_sims, shape1=nobs*prior_shape1 + a, shape2=nobs*GC_mean + prior_shape2)
 postpred_nb <- rnbinom(mc_sims, a, theta_sims)
@@ -627,12 +504,7 @@ postpred_nb <- rnbinom(mc_sims, a, theta_sims)
 
 ```
 
-::: {#fig-postpred_pnb
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 nb_postpred_plot <- ggplot(as_tibble(postpred_nb), aes(x=value))  + 
   xlim(0,20)  + theme_classic() +
@@ -644,18 +516,15 @@ nb_postpred_plot <- ggplot(as_tibble(postpred_nb), aes(x=value))  +
 nb_postpred_plot
 ```
 
-Histogram of `r mc_sims` realizations from posterior predictive distribution based on Negative Binomial-Beta hierarchy.  The posterior predictive mean is `r signif(mean(postpred_nb), digits=3)` and an 89\% prediction interval is (`r quantile(postpred_nb, 0.045)`, `r quantile(postpred_nb, 0.945)`).
-:::
+
+![Desktop View](/assets/img/Module-4/fig_9.png){: w="700" h="400" }
+_Figure 7: Histogram of 10^4 realizations from posterior predictive distribution based on Negative Binomial-Beta hierarchy. The posterior predictive mean is 2.92 and an 89% prediction interval is (0,7)._
 
 ## Monte Carlo Sample Size
 
 In the prior section the mean of the posterior predictive distribution for the Poisson-Gamma hierarchy was estimated to be `r signif(mean(postpred_pg), digits=3)` based on `r mc_sims` simulations.  Is this enough?
 
-```{r}
-#| echo: true
-#| eval: true
-#| warning: false
-#| message: false
+```
 
 ci <- signif(t.test(postpred_pg, conf.level = 0.95)&conf.int, digits = 4)
 ci
@@ -681,7 +550,7 @@ postpred_pg <- rnbinom(1e5, prior_shape + nobs*GC_mean, (prior_rate + nobs)/(pri
 
 mean(postpred_pg)
 
-ci <- signif(t.test(postpred_pg, conf.level = 0.95)$conf.int, digits = 4)
+ci <- signif(t.test(postpred_pg, conf.level = 0.95)conf.int, digits = 4)
 ci
 
 
